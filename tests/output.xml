@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.7.9 on win32)" generated="20220504 23:07:13.408">
+<suite id="s1" name="RabbitMQTestCases" source="C:\Users\kandakatala\PycharmProjects\pawan\Tasks II\tests\RabbitMQTestCases.robot">
+<test id="s1-t1" name="Verify Send And Receive Message On RabbitMQ">
+<kw name="Create Channel Exchange" library="RabbitMQKeywords">
+<arguments>
+<arg>${exchange_name}</arg>
+</arguments>
+<kw name="Create Exchange" library="RabbitMQLib">
+<arguments>
+<arg>${exchange_name}</arg>
+</arguments>
+<status status="PASS" starttime="20220504 23:07:13.487" endtime="20220504 23:07:13.500"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.487" endtime="20220504 23:07:13.500"></status>
+</kw>
+<kw name="Create Channel Queue" library="RabbitMQKeywords">
+<arguments>
+<arg>${queue_name}</arg>
+</arguments>
+<kw name="Create Queue" library="RabbitMQLib">
+<arguments>
+<arg>${queue_name}</arg>
+</arguments>
+<status status="PASS" starttime="20220504 23:07:13.501" endtime="20220504 23:07:13.501"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.501" endtime="20220504 23:07:13.502"></status>
+</kw>
+<kw name="Bind Exchange To A Queue" library="RabbitMQKeywords">
+<arguments>
+<arg>${exchange_name}</arg>
+<arg>${queue_name}</arg>
+</arguments>
+<kw name="Bing Exchange To Queue" library="RabbitMQLib">
+<arguments>
+<arg>${exchange_name}</arg>
+<arg>${queue_name}</arg>
+</arguments>
+<status status="PASS" starttime="20220504 23:07:13.502" endtime="20220504 23:07:13.503"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.502" endtime="20220504 23:07:13.503"></status>
+</kw>
+<kw name="Send Message to Queue" library="RabbitMQKeywords">
+<arguments>
+<arg>${exchange_name}</arg>
+<arg>${queue_name}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Publish Message" library="RabbitMQLib">
+<arguments>
+<arg>${exchange_name}</arg>
+<arg>${queue_name}</arg>
+<arg>${send_message}</arg>
+</arguments>
+<msg timestamp="20220504 23:07:13.504" level="INFO">message published</msg>
+<status status="PASS" starttime="20220504 23:07:13.503" endtime="20220504 23:07:13.504"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.503" endtime="20220504 23:07:13.504"></status>
+</kw>
+<kw name="Verify Received Message From Queue" library="RabbitMQKeywords">
+<arguments>
+<arg>${queue_name}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Verify Received Message" library="RabbitMQLib">
+<arguments>
+<arg>${queue_name}</arg>
+<arg>${received_message}</arg>
+</arguments>
+<status status="PASS" starttime="20220504 23:07:13.504" endtime="20220504 23:07:13.505"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.504" endtime="20220504 23:07:13.505"></status>
+</kw>
+<kw name="Close Connection" library="RabbitMQKeywords" type="teardown">
+<kw name="Close Connection" library="RabbitMQLib">
+<msg timestamp="20220504 23:07:13.506" level="INFO">Closing connection (200): Normal shutdown</msg>
+<msg timestamp="20220504 23:07:13.506" level="INFO">Closing channel (200): 'Normal shutdown' on &lt;Channel number=1 OPEN conn=&lt;SelectConnection OPEN transport=&lt;pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x000001C88B614788&gt; params=&lt;ConnectionParameters host=localhost port=5672 virtual_host=/ ssl=False&gt;&gt;&gt;</msg>
+<msg timestamp="20220504 23:07:13.507" level="INFO">Received &lt;Channel.CloseOk&gt; on &lt;Channel number=1 CLOSING conn=&lt;SelectConnection OPEN transport=&lt;pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x000001C88B614788&gt; params=&lt;ConnectionParameters host=localhost port=5672 virtual_host=/ ssl=False&gt;&gt;&gt;</msg>
+<msg timestamp="20220504 23:07:13.507" level="INFO">Closing connection (200): 'Normal shutdown'</msg>
+<msg timestamp="20220504 23:07:13.507" level="INFO">Aborting transport connection: state=1; &lt;socket.socket fd=796, family=AddressFamily.AF_INET6, type=SocketKind.SOCK_STREAM, proto=6, laddr=('::1', 65295, 0, 0), raddr=('::1', 5672, 0, 0)&gt;</msg>
+<msg timestamp="20220504 23:07:13.507" level="INFO">_AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; &lt;socket.socket fd=796, family=AddressFamily.AF_INET6, type=SocketKind.SOCK_STREAM, proto=6, laddr=('::1', 65295, 0, 0), raddr=('::1', 5672, 0, 0)&gt;</msg>
+<msg timestamp="20220504 23:07:13.507" level="INFO">Deactivating transport: state=1; &lt;socket.socket fd=796, family=AddressFamily.AF_INET6, type=SocketKind.SOCK_STREAM, proto=6, laddr=('::1', 65295, 0, 0), raddr=('::1', 5672, 0, 0)&gt;</msg>
+<msg timestamp="20220504 23:07:13.508" level="INFO">AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'</msg>
+<msg timestamp="20220504 23:07:13.508" level="INFO">Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'</msg>
+<msg timestamp="20220504 23:07:13.508" level="INFO">Closing transport socket and unlinking: state=3; &lt;socket.socket fd=796, family=AddressFamily.AF_INET6, type=SocketKind.SOCK_STREAM, proto=6, laddr=('::1', 65295, 0, 0), raddr=('::1', 5672, 0, 0)&gt;</msg>
+<msg timestamp="20220504 23:07:13.508" level="INFO">User-initiated close: result=BlockingConnection__OnClosedArgs(connection=&lt;SelectConnection CLOSED transport=None params=&lt;ConnectionParameters host=localhost port=5672 virtual_host=/ ssl=False&gt;&gt;, error=ConnectionClosedByClient: (200) 'Normal shutdown')</msg>
+<status status="PASS" starttime="20220504 23:07:13.506" endtime="20220504 23:07:13.508"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.506" endtime="20220504 23:07:13.508"></status>
+</kw>
+<status status="PASS" starttime="20220504 23:07:13.487" endtime="20220504 23:07:13.509" critical="yes"></status>
+</test>
+<doc>This suite automates RabbitMQ send and receive messages from Exchanges using Robot</doc>
+<status status="PASS" starttime="20220504 23:07:13.409" endtime="20220504 23:07:13.509"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="RabbitMQTestCases">RabbitMQTestCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
