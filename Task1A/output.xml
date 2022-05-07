@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.7.9 on win32)" generated="20220507 12:04:27.842">
+<suite id="s1" name="URLShortnerTestcases" source="C:\Users\kandakatala\PycharmProjects\pawan\Task1A\URLShortnerTestcases.robot">
+<test id="s1-t1" name="Testcase01: Verify URL Shortner Service Is Running">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:28.114" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:28.114" endtime="20220507 12:04:30.172"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${page_heading}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:30.188" level="INFO">Current page contains element '//h1[contains(text(),'Welcome to FlaskShortener')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:30.173" endtime="20220507 12:04:30.188"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${url_textbox}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:30.198" level="INFO">Current page contains element '//input[@placeholder="URL to shorten"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:30.189" endtime="20220507 12:04:30.198"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:30.210" level="INFO">Current page contains element '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:30.199" endtime="20220507 12:04:30.210"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:30.211" endtime="20220507 12:04:32.357"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Open http://127.0.0.1:5000/
+2. Verify the if page heading "Welcome to FlaskShortener", URL textbox and submit button exists.</doc>
+<tags>
+<tag>T01</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:28.113" endtime="20220507 12:04:32.358" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Testcase02: Verify Required field for URL">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:32.363" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:32.363" endtime="20220507 12:04:34.620"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:34.621" level="INFO">Clicking button '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:34.621" endtime="20220507 12:04:34.741"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${required_element}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:34.755" level="INFO">Current page contains element '//div[contains(text(),'The URL is required!')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:34.741" endtime="20220507 12:04:34.755"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:34.756" endtime="20220507 12:04:36.912"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Open http://127.0.0.1:5000/
+2. Provide empty/no URL
+3. Click on submit button
+4. Verify mandatory field text "The URL is required!"</doc>
+<tags>
+<tag>T02</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:32.361" endtime="20220507 12:04:36.912" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Testcase03: Verify CCI website URL Is Shortnened">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:36.915" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:36.915" endtime="20220507 12:04:39.098"></status>
+</kw>
+<kw name="Provide URL To Be Shorted And Click On Submit Button">
+<arguments>
+<arg>${cci_long_link}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${url_textbox}</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:39.101" level="INFO">Typing text 'https://www.google.com/search?q=cci+global+technologies&amp;sxsrf=ALiCzsb1hCafUQ7iTQwhalDCgL1DAG0igg%3A1651902212579&amp;ei=BAd2Yo6AI7ygseMP0by-6A4&amp;oq=cci+global&amp;gs_lcp=Cgdnd3Mtd2l6EAMYATIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyCAgAEIAEEMkDMgsILhCABBDHARCvATIFCAAQgAQyBQgAEIAEMgUIABCABDoECCMQJzoECAAQQzoQCC4QsQMQgwEQxwEQ0QMQQzoKCAAQsQMQgwEQQzoLCAAQgAQQsQMQgwE6CAgAEIAEELEDOg0ILhCxAxDHARDRAxBDOgsILhCABBDHARDRAzoRCC4QgAQQsQMQgwEQxwEQ0QM6CAgAELEDEIMBOgoIABCABBCHAhAUSgQIQRgASgQIRhgAUABY8TNg20BoAnAAeACAAdwKiAH1UpIBCTQtMS4wLjYuNJgBAKABAcABAQ&amp;sclient=gws-wiz' into text field '//input[@placeholder="URL to shorten"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:39.101" endtime="20220507 12:04:39.588"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:39.589" level="INFO">Clicking button '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:39.588" endtime="20220507 12:04:39.707"></status>
+</kw>
+<status status="PASS" starttime="20220507 12:04:39.100" endtime="20220507 12:04:39.707"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${shortened_url_element}</arg>
+</arguments>
+<assign>
+<var>${shortened_url}</var>
+</assign>
+<msg timestamp="20220507 12:04:39.742" level="INFO">${shortened_url} = http://127.0.0.1:5000/qNx1</msg>
+<status status="PASS" starttime="20220507 12:04:39.709" endtime="20220507 12:04:39.742"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:39.744" level="INFO">http://127.0.0.1:5000/qNx1</msg>
+<status status="PASS" starttime="20220507 12:04:39.744" endtime="20220507 12:04:39.744"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:39.745" level="INFO">Opening url 'http://127.0.0.1:5000/qNx1'</msg>
+<status status="PASS" starttime="20220507 12:04:39.744" endtime="20220507 12:04:41.729"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${cci_company_text}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:41.744" level="INFO">Current page contains element '//span[contains(text(),'CCi Global Technologies')]//following::span[contains(text(),'Automation company in Hamilton, Canada')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:41.730" endtime="20220507 12:04:41.744"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:41.745" endtime="20220507 12:04:43.935"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Opens http://127.0.0.1:5000/
+2. Provide CCI website Long URL
+3. Click on submit button
+4. Verifiy that URL is shortened
+5. Open the shorted URL and verify that CCI website is opened</doc>
+<tags>
+<tag>T03</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:36.914" endtime="20220507 12:04:43.937" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Testcase04: Test Invalid URL">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:43.939" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:43.939" endtime="20220507 12:04:45.998"></status>
+</kw>
+<kw name="Provide URL To Be Shorted And Click On Submit Button">
+<arguments>
+<arg>test</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${url_textbox}</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:46.000" level="INFO">Typing text 'test' into text field '//input[@placeholder="URL to shorten"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:46.000" endtime="20220507 12:04:46.067"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:46.067" level="INFO">Clicking button '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:46.067" endtime="20220507 12:04:46.180"></status>
+</kw>
+<status status="PASS" starttime="20220507 12:04:46.000" endtime="20220507 12:04:46.180"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${shortened_url_element}</arg>
+</arguments>
+<assign>
+<var>${shortened_url}</var>
+</assign>
+<msg timestamp="20220507 12:04:46.213" level="INFO">${shortened_url} = http://127.0.0.1:5000/1OQq</msg>
+<status status="PASS" starttime="20220507 12:04:46.184" endtime="20220507 12:04:46.213"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:46.214" level="INFO">http://127.0.0.1:5000/1OQq</msg>
+<status status="PASS" starttime="20220507 12:04:46.213" endtime="20220507 12:04:46.214"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:46.215" level="INFO">Opening url 'http://127.0.0.1:5000/1OQq'</msg>
+<status status="PASS" starttime="20220507 12:04:46.215" endtime="20220507 12:04:46.287"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${invalid_url_element}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:46.303" level="INFO">Current page contains element '//div[contains(text(),'Invalid URL')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:46.288" endtime="20220507 12:04:46.304"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:46.304" endtime="20220507 12:04:48.513"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Opens http://127.0.0.1:5000/
+2. Provide invalid URL eg: test
+3. Click on submit button
+4. Verifiy that URL is shortened URL
+5. Open the shorted URL and verify that url is invalid. Verify invalid url error message
+[Note] This can be a bug 1. When a invalid URL is provided(eg: test), it doesnt throw any error and gives us the shortened URL. When we access the shortened URL,
+then it gives "Invalid URL". Instead of this behaviour , the error should be thrown immediately when we provide invalid url and click on submit button</doc>
+<tags>
+<tag>T04</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:43.938" endtime="20220507 12:04:48.514" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Testcase05: Verify CCI website URL With Extra Spaces At The End Is Shortnened Successfully">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:48.516" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:48.516" endtime="20220507 12:04:50.636"></status>
+</kw>
+<kw name="Provide URL To Be Shorted And Click On Submit Button">
+<arguments>
+<arg>${cci_long_link}${SPACE}${SPACE}${SPACE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${url_textbox}</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:50.638" level="INFO">Typing text 'https://www.google.com/search?q=cci+global+technologies&amp;sxsrf=ALiCzsb1hCafUQ7iTQwhalDCgL1DAG0igg%3A1651902212579&amp;ei=BAd2Yo6AI7ygseMP0by-6A4&amp;oq=cci+global&amp;gs_lcp=Cgdnd3Mtd2l6EAMYATIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyCAgAEIAEEMkDMgsILhCABBDHARCvATIFCAAQgAQyBQgAEIAEMgUIABCABDoECCMQJzoECAAQQzoQCC4QsQMQgwEQxwEQ0QMQQzoKCAAQsQMQgwEQQzoLCAAQgAQQsQMQgwE6CAgAEIAEELEDOg0ILhCxAxDHARDRAxBDOgsILhCABBDHARDRAzoRCC4QgAQQsQMQgwEQxwEQ0QM6CAgAELEDEIMBOgoIABCABBCHAhAUSgQIQRgASgQIRhgAUABY8TNg20BoAnAAeACAAdwKiAH1UpIBCTQtMS4wLjYuNJgBAKABAcABAQ&amp;sclient=gws-wiz   ' into text field '//input[@placeholder="URL to shorten"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:50.638" endtime="20220507 12:04:51.146"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:51.146" level="INFO">Clicking button '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:51.146" endtime="20220507 12:04:51.253"></status>
+</kw>
+<status status="PASS" starttime="20220507 12:04:50.638" endtime="20220507 12:04:51.253"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${shortened_url_element}</arg>
+</arguments>
+<assign>
+<var>${shortened_url}</var>
+</assign>
+<msg timestamp="20220507 12:04:51.285" level="INFO">${shortened_url} = http://127.0.0.1:5000/1rpq</msg>
+<status status="PASS" starttime="20220507 12:04:51.254" endtime="20220507 12:04:51.285"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:51.286" level="INFO">http://127.0.0.1:5000/1rpq</msg>
+<status status="PASS" starttime="20220507 12:04:51.286" endtime="20220507 12:04:51.286"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:51.287" level="INFO">Opening url 'http://127.0.0.1:5000/1rpq'</msg>
+<status status="PASS" starttime="20220507 12:04:51.287" endtime="20220507 12:04:53.281"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${cci_company_text}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:53.302" level="INFO">Current page contains element '//span[contains(text(),'CCi Global Technologies')]//following::span[contains(text(),'Automation company in Hamilton, Canada')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:53.282" endtime="20220507 12:04:53.302"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:53.304" endtime="20220507 12:04:55.536"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Opens http://127.0.0.1:5000/
+2. Provide CCL long URL with extra spaces at the end
+3. Click on submit button
+4. Verifiy that URL is shortened
+5. Open the shorted URL and verify that CCI website is opened</doc>
+<tags>
+<tag>T05</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:48.515" endtime="20220507 12:04:55.541" critical="yes"></status>
+</test>
+<test id="s1-t6" name="Testcase06: Verify Google URL With IP Address Is Shortnened Successfully">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://127.0.0.1:5000/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220507 12:04:55.548" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<status status="PASS" starttime="20220507 12:04:55.547" endtime="20220507 12:04:57.698"></status>
+</kw>
+<kw name="Provide URL To Be Shorted And Click On Submit Button">
+<arguments>
+<arg>${google_ip_url}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${url_textbox}</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:57.699" level="INFO">Typing text 'http://142.250.195.78' into text field '//input[@placeholder="URL to shorten"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:57.699" endtime="20220507 12:04:57.777"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${submit_button}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:57.777" level="INFO">Clicking button '//button[contains(text(),'Submit')]'.</msg>
+<status status="PASS" starttime="20220507 12:04:57.777" endtime="20220507 12:04:57.896"></status>
+</kw>
+<status status="PASS" starttime="20220507 12:04:57.699" endtime="20220507 12:04:57.896"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${shortened_url_element}</arg>
+</arguments>
+<assign>
+<var>${shortened_url}</var>
+</assign>
+<msg timestamp="20220507 12:04:57.931" level="INFO">${shortened_url} = http://127.0.0.1:5000/19bR</msg>
+<status status="PASS" starttime="20220507 12:04:57.900" endtime="20220507 12:04:57.931"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:57.933" level="INFO">http://127.0.0.1:5000/19bR</msg>
+<status status="PASS" starttime="20220507 12:04:57.933" endtime="20220507 12:04:57.933"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${shortened_url}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:57.934" level="INFO">Opening url 'http://127.0.0.1:5000/19bR'</msg>
+<status status="PASS" starttime="20220507 12:04:57.933" endtime="20220507 12:04:59.770"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${google_search_element}</arg>
+</arguments>
+<msg timestamp="20220507 12:04:59.791" level="INFO">Current page contains element '//input[@value="Google Search"]'.</msg>
+<status status="PASS" starttime="20220507 12:04:59.772" endtime="20220507 12:04:59.791"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220507 12:04:59.793" endtime="20220507 12:05:01.963"></status>
+</kw>
+<doc>[Pre-Requisite]: Make sure URL shortner service http://127.0.0.1:5000/ is up and running
+[Steps]:
+1. Opens http://127.0.0.1:5000/
+2. Provide Google URL with IP Address eg: http://142.250.195.78
+3. Click on submit button
+4. Verifiy that URL is shortened
+5. Open the shorted URL and verify that Google is opened
+</doc>
+<tags>
+<tag>T06</tag>
+</tags>
+<status status="PASS" starttime="20220507 12:04:55.545" endtime="20220507 12:05:01.965" critical="yes"></status>
+</test>
+<doc>This suite automates different testcases for URL shortner that is running on http://127.0.0.1:5000/</doc>
+<status status="PASS" starttime="20220507 12:04:27.844" endtime="20220507 12:05:01.971"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0">Critical Tests</stat>
+<stat pass="6" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">T01</stat>
+<stat pass="1" fail="0">T02</stat>
+<stat pass="1" fail="0">T03</stat>
+<stat pass="1" fail="0">T04</stat>
+<stat pass="1" fail="0">T05</stat>
+<stat pass="1" fail="0">T06</stat>
+</tag>
+<suite>
+<stat pass="6" fail="0" id="s1" name="URLShortnerTestcases">URLShortnerTestcases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
